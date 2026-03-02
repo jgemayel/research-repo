@@ -45,11 +45,11 @@ export default function KaramShaarBriefing() {
       }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
           <div>
-            <div style={{ fontSize: 10, letterSpacing: 3.5, color: "#4a5568", textTransform: "uppercase" }}>Oliver Wyman · Syria Engagement · Pre-Call Briefing</div>
+            <div style={{ fontSize: 10, letterSpacing: 3.5, color: "#4a5568", textTransform: "uppercase" }}>Syria Engagement · Pre-Call Research Briefing</div>
             <h1 style={{ fontSize: 24, fontWeight: 400, color: "#ddd8cc", margin: "6px 0 0", letterSpacing: -0.3 }}>Karam Shaar Advisory</h1>
           </div>
           <div style={{ textAlign: "right", flexShrink: 0 }}>
-            <div style={{ fontSize: 10, color: "#4a5568", letterSpacing: 2 }}>FOR DOM · MAR 2026</div>
+            <div style={{ fontSize: 10, color: "#4a5568", letterSpacing: 2 }}>INTERNAL · MAR 2026</div>
             <div style={{ fontSize: 11, color: "#5a6578", marginTop: 2 }}>karamshaar.com · NZ LLC</div>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function KaramShaarBriefing() {
             </div>
 
             <Callout color="#6b9e82" label="Bottom Line">
-              Karam Shaar Advisory appears to be the go-to independent consultancy for Syria's political economy. Their combination of on-the-ground networks (field teams across all control areas in Syria), academic rigor (PhD-led, published in top outlets), and technical capability (OSINT, AI analytics, interactive data tools) is rare. The founder's trajectory from activist to UN economic adviser gives him deep institutional relationships on both the Syrian and international sides. For our Syria financial sector assessment, they could be a highly valuable data source, sub-contractor, or strategic partner.
+              Karam Shaar Advisory appears to be the go-to independent consultancy for Syria's political economy. Their combination of on-the-ground networks (field teams across all control areas in Syria), academic rigor (PhD-led, published in top outlets), and technical capability (OSINT, AI analytics, interactive data tools) is rare. The founder's trajectory from activist to UN economic adviser gives him deep institutional relationships on both the Syrian and international sides. For a Syria financial sector assessment, they could be a highly valuable data source, sub-contractor, or strategic partner.
             </Callout>
           </div>
         )}
@@ -112,11 +112,11 @@ export default function KaramShaarBriefing() {
               <DataRow title="Exchange Rate & Macro Data" strength="Strong" color="#6b8fa8" desc="Live Official and Black Market Exchange Rates Tracker. UN Exchange Rate Gap Tracker. 'Syria in Figures' monthly publication with systematic macro indicators. Energy specialist with Stata." />
               <DataRow title="Sanctions & Compliance Data" strength="Very Strong" color="#6b9e82" desc="Interactive dashboard of all US/EU sanctioned individuals. Monthly Sanctions Monitor (5 issues). Caesar Act status tracker. Two ex-Central Bank of Syria staff on the team." />
               <DataRow title="Political Economy & Actor Mapping" strength="Strong" color="#6b8fa8" desc="Interactive tools for interim government, Parliament 2025, ISIS attacks, tribal topology, heads of state. Captagon trade analysis and crony capitalism networks via Observatory of P&E Networks." />
-              <DataRow title="Banking / Financial Sector" strength="OW Relevant" color="#c4975a" desc="Major report on banking sector sanctions (Jul 2025) based on interviews with Syrian bankers. Two ex-CBS staff: Abeer Asaad (Head of Off-Site Banking Supervision) and Majd Hamad (MENAFATF Advisory Committee). IFRS, Basel, AML/CFT expertise." />
+              <DataRow title="Banking / Financial Sector" strength="Highly Relevant" color="#c4975a" desc="Major report on banking sector sanctions (Jul 2025) based on interviews with Syrian bankers. Two ex-CBS staff: Abeer Asaad (Head of Off-Site Banking Supervision) and Majd Hamad (MENAFATF Advisory Committee). IFRS, Basel, AML/CFT expertise." />
             </div>
 
             <Callout color="#c4975a" label="Key Gaps to Probe">
-              The website showcases outputs but does not detail underlying databases, proprietary datasets, or third-party data subscriptions. We should explore whether they maintain structured databases vs. ad-hoc research, how they validate field data, their data refresh frequency, and whether methodology documentation meets our standards for source verification. Also worth understanding if they hold any exclusive data arrangements with Syrian government entities post-transition.
+              The website showcases outputs but does not detail underlying databases, proprietary datasets, or third-party data subscriptions. We should explore whether they maintain structured databases vs. ad-hoc research, how they validate field data, their data refresh frequency, and whether methodology documentation meets typical standards for source verification. Also worth understanding if they hold any exclusive data arrangements with Syrian government entities post-transition.
             </Callout>
           </div>
         )}
@@ -124,7 +124,7 @@ export default function KaramShaarBriefing() {
         {active === "questions" && (
           <div>
             <H2>Suggested Questions for the Call</H2>
-            <P>Organized by priority. Goal is to understand data capabilities, methodologies, and how they could complement our financial sector assessment.</P>
+            <P>Organized by priority. Goal is to understand data capabilities, methodologies, and how they could complement a financial sector assessment.</P>
 
             <div style={{ marginBottom: 20 }}>
               <PriorityLabel color="#c47a6b">Priority 1 — Must Ask</PriorityLabel>
@@ -291,8 +291,8 @@ export default function KaramShaarBriefing() {
               <Card label="Deliverables">Monthly Sanctions Newsletter. Thematic analytical briefs (8-10 pages). Pro bono legal aid platform for Syrian civil society. In-person advocacy missions to Western governments and think tanks.</Card>
               <Card label="Key Publications">Syria Accountability Act repeal analysis (Feb 2026). Caesar Act status assessment. UN 1267 HTS sectoral impact. US legislative tracker. Syria sanctions bills tracker.</Card>
             </div>
-            <Callout color="#c4975a" label="Relevance to OW">
-              Their sanctions expertise maps directly to our financial sector assessment. The "sanctions hangover" framing aligns with the compliance and reintegration challenges shaping how Syria's banking sector can reconnect to international correspondent banking. Their ex-CBS team members provide institutional memory of how the system operated before and during the conflict.
+            <Callout color="#c4975a" label="Strategic Relevance">
+              Their sanctions expertise maps directly to a financial sector assessment engagement. The "sanctions hangover" framing aligns with the compliance and reintegration challenges shaping how Syria's banking sector can reconnect to international correspondent banking. Their ex-CBS team members provide institutional memory of how the system operated before and during the conflict.
             </Callout>
           </div>
         )}
