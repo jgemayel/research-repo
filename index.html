@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karam Shaar Advisory - Pre-Call Briefing</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0b0e13; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0b0e13; }
+    ::-webkit-scrollbar-thumb { background: #1c2030; border-radius: 3px; }
+    .tab-bar::-webkit-scrollbar { display: none; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const sections = [
+      { id: "exec", label: "Summary" },
+      { id: "data", label: "Data & Sources" },
+      { id: "questions", label: "Call Questions" },
+      { id: "founder", label: "Team" },
+      { id: "services", label: "Services" },
+      { id: "clients", label: "Clients" },
+      { id: "publications", label: "Publications" },
+      { id: "sanctions", label: "Sanctions" },
+      { id: "media", label: "Media" },
+    ];
+
+    const teamMembers = [
+      { name: "Dr. Karam Shaar", role: "Director", location: "NZ", bg: "PhD Victoria Univ. Wellington. Ex-Chief Economic Consultant, UN Damascus. Ex-Senior Consultant, World Bank. Ex-Senior Analyst, NZ Treasury. Nonresident Senior Fellow, New Lines Institute." },
+      { name: "Amin Qurabi", role: "Team Leader", location: "Syria", bg: "10+ yrs MEAL Officer in NW Syria. Certified Assistant in Economics." },
+      { name: "Ben Fève", role: "Sr. Research Analyst", location: "France", bg: "Leads 'Syria in Figures' monthly. 3 yrs at The Syria Report. MA Euro-Mediterranean Relations, Aix-Marseille." },
+      { name: "Mouayad Al-Bonni", role: "Senior Analyst", location: "Italy", bg: "Decade+ advising on stabilisation in MENA. GIZ post-conflict strategy, World Bank 'Building for Peace'. MA Georgetown SFS." },
+      { name: "Vittorio Maresca", role: "Sanctions Lead", location: "Lebanon", bg: "MSc Economic History (Distinction), Oxford. Ex-Reuters economics reporter. IMF funding, banking reform, illicit finance." },
+      { name: "Natasha Hall", role: "Sr. Consultant", location: "USA", bg: "Senior Associate (non-resident), CSIS. 20 yrs humanitarian emergencies. Reports informed congressional hearings. MA Georgetown SFS." },
+      { name: "Wael Alwani", role: "Sr. Consultant", location: "Canada", bg: "AI and financial crime. 14+ yrs at Deloitte, TD Bank. Co-founder, Observatory of Political & Economic Networks." },
+      { name: "Charles Lister", role: "Sr. Consultant", location: "USA", bg: "Senior Fellow & Director, Syria Initiative at MEI. Counterterrorism expert. UN IIIM consultant. MA St. Andrews." },
+      { name: "Majd Hamad", role: "Banking Expert", location: "Syria", bg: "Ex-Central Bank of Syria. AML/CFT specialist. MENAFATF Advisory Committee member." },
+      { name: "Abeer Asaad", role: "Financial Expert", location: "Syria", bg: "14 yrs financial auditing. Ex-Head of Off-Site Banking Supervision, CBS. IFRS, Basel frameworks." },
+      { name: "Mohamad Ahmad", role: "Economist & Energy", location: "\u2014", bg: "Syrian oil & gas specialist. Fiscal/monetary policy. Stata. Persian speaker." },
+      { name: "Mohammad Orwani", role: "OSINT Lead", location: "\u2014", bg: "OSINT research, interactive visualizations, data analysis. Ex-journalist, Smart FM." },
+    ];
+
+    function H2({ children }) {
+      return <h2 style={{ fontSize: 16, fontWeight: 400, color: "#ddd8cc", margin: "0 0 14px", paddingBottom: 8, borderBottom: "1px solid #181d28", letterSpacing: 0.2 }}>{children}</h2>;
+    }
+    function P({ children }) {
+      return <p style={{ fontSize: 13.5, lineHeight: 1.7, color: "#8a9298", margin: "0 0 12px" }}>{children}</p>;
+    }
+    function Stat({ value, label, sub }) {
+      return (
+        <div style={{ background: "#0f1219", border: "1px solid #181d28", borderRadius: 6, padding: "14px 16px", textAlign: "center" }}>
+          <div style={{ fontSize: 26, color: "#6b9e82", fontWeight: 300, letterSpacing: -1 }}>{value}</div>
+          <div style={{ fontSize: 11.5, color: "#b8b2a6", marginTop: 3 }}>{label}</div>
+          <div style={{ fontSize: 10, color: "#3a4250", marginTop: 1 }}>{sub}</div>
+        </div>
+      );
+    }
+    function Card({ label, children }) {
+      return (
+        <div style={{ background: "#0f1219", border: "1px solid #181d28", borderRadius: 6, padding: "12px 16px" }}>
+          <div style={{ fontSize: 10, letterSpacing: 2, color: "#6b9e82", textTransform: "uppercase", marginBottom: 6 }}>{label}</div>
+          <div style={{ fontSize: 12.5, lineHeight: 1.6, color: "#7a8494" }}>{children}</div>
+        </div>
+      );
+    }
+    function Callout({ color, label, children }) {
+      return (
+        <div style={{ background: "#11141c", border: "1px solid " + color + "33", borderLeft: "3px solid " + color, borderRadius: 6, padding: "14px 18px", marginTop: 16 }}>
+          <div style={{ fontSize: 10, letterSpacing: 2.5, color: color, textTransform: "uppercase", marginBottom: 6 }}>{label}</div>
+          <div style={{ fontSize: 13, lineHeight: 1.7, color: "#9a9ea8" }}>{children}</div>
+        </div>
+      );
+    }
+    function DataRow({ title, strength, color, desc }) {
+      return (
+        <div style={{ background: "#0f1219", border: "1px solid #181d28", borderLeft: "3px solid " + color, borderRadius: 4, padding: "12px 16px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+            <span style={{ fontSize: 13, color: "#c8c2b6" }}>{title}</span>
+            <span style={{ fontSize: 9, padding: "2px 7px", borderRadius: 3, background: color + "1a", color: color, letterSpacing: 1.5 }}>{strength}</span>
+          </div>
+          <div style={{ fontSize: 12, lineHeight: 1.6, color: "#6b7888" }}>{desc}</div>
+        </div>
+      );
+    }
+    function PriorityLabel({ color, children }) {
+      return <div style={{ fontSize: 11, letterSpacing: 1.5, color: color, marginBottom: 8, marginTop: 4 }}>{children}</div>;
+    }
+    function QCard({ q, r }) {
+      return (
+        <div style={{ background: "#0f1219", border: "1px solid #181d28", borderRadius: 4, padding: "10px 14px", marginBottom: 6 }}>
+          <div style={{ fontSize: 13, color: "#c8c2b6", lineHeight: 1.5, marginBottom: 4 }}>{q}</div>
+          <div style={{ fontSize: 11.5, color: "#4a5568", lineHeight: 1.5, fontStyle: "italic" }}>{r}</div>
+        </div>
+      );
+    }
+
+    const thS = { padding: "9px 14px", textAlign: "left", fontSize: 10, letterSpacing: 1.5, color: "#4a5568", textTransform: "uppercase", borderBottom: "1px solid #181d28" };
+    const tdS = { padding: "9px 14px", fontSize: 12.5, color: "#8a9298" };
+
+    function App() {
+      const [active, setActive] = useState("exec");
+      const [expandedTeam, setExpandedTeam] = useState(null);
+
+      return (
+        <div style={{ fontFamily: "'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif", background: "#0b0e13", color: "#b8b2a6", minHeight: "100vh" }}>
+          <div style={{ background: "linear-gradient(180deg, #111520 0%, #0e1118 100%)", borderBottom: "1px solid #1c2030", padding: "20px 28px 0", position: "sticky", top: 0, zIndex: 10 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
+              <div>
+                <div style={{ fontSize: 10, letterSpacing: 3.5, color: "#4a5568", textTransform: "uppercase" }}>Oliver Wyman &middot; Syria Engagement &middot; Pre-Call Briefing</div>
+                <h1 style={{ fontSize: 24, fontWeight: 400, color: "#ddd8cc", margin: "6px 0 0", letterSpacing: -0.3 }}>Karam Shaar Advisory</h1>
+              </div>
+              <div style={{ textAlign: "right", flexShrink: 0 }}>
+                <div style={{ fontSize: 10, color: "#4a5568", letterSpacing: 2 }}>FOR DOM &middot; MAR 2026</div>
+                <div style={{ fontSize: 11, color: "#5a6578", marginTop: 2 }}>karamshaar.com &middot; NZ LLC</div>
+              </div>
+            </div>
+            <div className="tab-bar" style={{ display: "flex", gap: 0, overflowX: "auto", scrollbarWidth: "none" }}>
+              {sections.map((s) => (
+                <button key={s.id} onClick={() => setActive(s.id)} style={{ padding: "9px 18px", border: "none", cursor: "pointer", background: "transparent", color: active === s.id ? "#ddd8cc" : "#4a5568", fontSize: 12, fontFamily: "inherit", whiteSpace: "nowrap", borderBottom: active === s.id ? "2px solid #6b9e82" : "2px solid transparent", transition: "all 0.15s", letterSpacing: 0.3 }}>{s.label}</button>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ padding: "24px 28px 40px", maxWidth: 960, margin: "0 auto" }}>
+
+            {active === "exec" && (
+              <div>
+                <H2>Executive Summary</H2>
+                <P>Karam Shaar Advisory is a New Zealand-based consultancy exclusively focused on Syria's political economy and business environment. Led by Dr. Karam Shaar, a Syrian economist who previously served as Chief Economic Consultant at the UN Resident Coordinator's Office in Damascus and as a Senior Consultant at the World Bank.</P>
+                <P>Their analysis has been published by Brookings, Carnegie, Foreign Affairs, Foreign Policy, and The Guardian. They are regularly quoted by NYT, BBC, Reuters, Bloomberg, WSJ, and the FT. Clients include the World Bank, UN, US State Department, UK FCDO, German FFO, French MFA, Dutch MFA, GIZ, KfW, and several major foundations.</P>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, margin: "20px 0" }}>
+                  <Stat value="25+" label="Team members" sub="Across 8 countries" />
+                  <Stat value="18+" label="Clients & donors" sub="Govts, IOs, foundations" />
+                  <Stat value="13 pg" label="Publications" sub="Policy & academic" />
+                  <Stat value="15+" label="Research tools" sub="Interactive dashboards" />
+                </div>
+                <Callout color="#6b9e82" label="Bottom Line">
+                  Karam Shaar Advisory appears to be the go-to independent consultancy for Syria's political economy. Their combination of on-the-ground networks (field teams across all control areas in Syria), academic rigor (PhD-led, published in top outlets), and technical capability (OSINT, AI analytics, interactive data tools) is rare. The founder's trajectory from activist to UN economic adviser gives him deep institutional relationships on both the Syrian and international sides. For our Syria financial sector assessment, they could be a highly valuable data source, sub-contractor, or strategic partner.
+                </Callout>
+              </div>
+            )}
+
+            {active === "data" && (
+              <div>
+                <H2>Data Sources & Methodologies</H2>
+                <P>This is the most critical area for the call. Their data capabilities span several categories. Below is what we can infer from the website, plus gaps worth probing.</P>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 10, marginBottom: 20 }}>
+                  <DataRow title="Primary Field Data" strength="Very Strong" color="#6b9e82" desc="Guarantee access to all parts of Syria for primary data collection. Field researchers in Damascus, Deir ez-Zor, NW Syria. Team leader is a 10-year MEAL veteran in NW Syria." />
+                  <DataRow title="OSINT & Digital Intelligence" strength="Very Strong" color="#6b9e82" desc="Two OSINT leads, a data security expert, and an AI co-founder (ex-Deloitte/TD Bank). Geolocation via satellite, entity tracking, image/video analysis, graph tech, social network analysis." />
+                  <DataRow title="Exchange Rate & Macro Data" strength="Strong" color="#6b8fa8" desc="Live Official and Black Market Exchange Rates Tracker. UN Exchange Rate Gap Tracker. 'Syria in Figures' monthly publication with systematic macro indicators. Energy specialist with Stata." />
+                  <DataRow title="Sanctions & Compliance Data" strength="Very Strong" color="#6b9e82" desc="Interactive dashboard of all US/EU sanctioned individuals. Monthly Sanctions Monitor (5 issues). Caesar Act status tracker. Two ex-Central Bank of Syria staff on the team." />
+                  <DataRow title="Political Economy & Actor Mapping" strength="Strong" color="#6b8fa8" desc="Interactive tools for interim government, Parliament 2025, ISIS attacks, tribal topology, heads of state. Captagon trade analysis and crony capitalism networks via Observatory of P&E Networks." />
+                  <DataRow title="Banking / Financial Sector" strength="OW Relevant" color="#c4975a" desc="Major report on banking sector sanctions (Jul 2025) based on interviews with Syrian bankers. Two ex-CBS staff: Abeer Asaad (Head of Off-Site Banking Supervision) and Majd Hamad (MENAFATF Advisory Committee). IFRS, Basel, AML/CFT expertise." />
+                </div>
+                <Callout color="#c4975a" label="Key Gaps to Probe">
+                  The website showcases outputs but does not detail underlying databases, proprietary datasets, or third-party data subscriptions. We should explore whether they maintain structured databases vs. ad-hoc research, how they validate field data, their data refresh frequency, and whether methodology documentation meets our standards for source verification. Also worth understanding if they hold any exclusive data arrangements with Syrian government entities post-transition.
+                </Callout>
+              </div>
+            )}
+
+            {active === "questions" && (
+              <div>
+                <H2>Suggested Questions for the Call</H2>
+                <P>Organized by priority. Goal is to understand data capabilities, methodologies, and how they could complement our financial sector assessment.</P>
+                <div style={{ marginBottom: 20 }}>
+                  <PriorityLabel color="#c47a6b">Priority 1 — Must Ask</PriorityLabel>
+                  <QCard q="What structured datasets do you maintain on Syria's financial sector, and how frequently are they updated?" r="Banking report cites interviews with bankers/compliance experts. Need to know if they hold ongoing structured data vs. one-off research." />
+                  <QCard q="Your team includes two ex-CBS staff. What level of ongoing access or relationships do they maintain with the Central Bank post-transition?" r="Abeer Asaad (Head of Off-Site Banking Supervision) and Majd Hamad (MENAFATF) would have direct CBS knowledge. Understanding current access is critical." />
+                  <QCard q="How do you validate and quality-assure primary field data collected across different control areas in Syria?" r="They claim access to all parts of Syria. Need to understand methodology, sample sizes, and verification processes." />
+                  <QCard q="What is your current engagement with the Syrian transitional government on economic reform, and how does that shape advisory independence?" r="Given Karam's recent access to Syria and media profile, understanding potential conflicts or preferential access matters for due diligence." />
+                </div>
+                <div style={{ marginBottom: 20 }}>
+                  <PriorityLabel color="#c4975a">Priority 2 — Should Ask</PriorityLabel>
+                  <QCard q="Walk us through the data sources behind 'Syria in Figures.' What proportion comes from official stats vs. your own collection vs. third parties?" r="Flagship data product (16 monthly issues). Understanding methodology reveals their data infrastructure." />
+                  <QCard q="What OSINT tools and databases do you use for sanctions screening and actor mapping? Commercial platforms or proprietary?" r="Two OSINT leads and an AI specialist. Tech stack reveals scalability and depth." />
+                  <QCard q="Have you worked with management consultancies or IFIs on financial sector diagnostics before? Scope and deliverable format?" r="They list World Bank, GIZ, KfW. Understanding structured advisory delivery vs. standalone research frames potential collaboration." />
+                </div>
+                <div>
+                  <PriorityLabel color="#6b9e82">Priority 3 — Good to Ask</PriorityLabel>
+                  <QCard q="What is your geographic footprint for field data collection? How many active field researchers per governorate?" r="They mention teams spanning 'all control areas.' Quantifying helps assess coverage density." />
+                  <QCard q="How do you see the sanctions landscape evolving over 6-12 months, and what data are you tracking to monitor that?" r="Opens substantive discussion testing analytical depth and real-time monitoring capabilities." />
+                </div>
+              </div>
+            )}
+
+            {active === "founder" && (
+              <div>
+                <H2>Dr. Karam Shaar</H2>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 24 }}>
+                  <Card label="Academic">PhD Victoria Univ. Wellington. MSc Univ. Putra Malaysia. BA Economics, Univ. of Aleppo.</Card>
+                  <Card label="Key Prior Roles">Chief Economic Consultant, UN RC Office Damascus. Senior Consultant, World Bank. Nonresident Scholar, MEI. Senior Analyst, NZ Treasury. Senior Lecturer, Massey Univ.</Card>
+                  <Card label="Current Affiliations">Nonresident Senior Fellow, New Lines Institute. Published in Brookings, Carnegie, Foreign Affairs, Foreign Policy, MEI.</Card>
+                  <Card label="Personal Context">Aleppo native. Involved in civil movement from 2011. Family home barrel-bombed. Refuge across five countries. Regained Syria access since Assad's downfall Dec 2024.</Card>
+                </div>
+                <H2>Full Team ({teamMembers.length} key members of 25+)</H2>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 2 }}>
+                  {teamMembers.map((m, i) => (
+                    <button key={i} onClick={() => setExpandedTeam(expandedTeam === i ? null : i)} style={{ background: expandedTeam === i ? "#131822" : "#0f1219", border: "1px solid #181d28", borderRadius: 4, padding: "10px 14px", textAlign: "left", cursor: "pointer", color: "#b8b2a6", fontFamily: "inherit", transition: "background 0.15s", width: "100%" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <span style={{ fontSize: 13, color: "#c8c2b6" }}>{m.name}<span style={{ fontSize: 11, color: "#4a5568", marginLeft: 10 }}>{m.role}</span></span>
+                        <span style={{ fontSize: 10, color: "#3a4250" }}>{m.location}</span>
+                      </div>
+                      {expandedTeam === i && (
+                        <div style={{ fontSize: 12, color: "#6b7888", marginTop: 8, lineHeight: 1.55, borderTop: "1px solid #181d28", paddingTop: 8 }}>{m.bg}</div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+                <div style={{ fontSize: 11, color: "#3a4250", marginTop: 10 }}>Additional staff includes field researchers (Damascus, Deir ez-Zor), junior economists, a legal advisor (14 yrs Syrian law), full-stack developers, communications, and a copy editor with 30+ years experience.</div>
+              </div>
+            )}
+
+            {active === "services" && (
+              <div>
+                <H2>Services</H2>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 24 }}>
+                  <Card label="Policy Consulting">Oral updates, policy briefs (&lt;1,000 words, 72-hr turnaround), data-driven policy research with primary collection across all of Syria.</Card>
+                  <Card label="Due Diligence">Background checks on individuals/entities. Wide network of informants, businesspeople, government officials. KYC, sanctions, citizenship, criminal cases.</Card>
+                  <Card label="Coaching & Training">Group and 1-on-1 sessions for diplomats and IO/NGO staff. Hourly or daily.</Card>
+                  <Card label="Interactive Visualizations">Bespoke dashboards (multi-week builds) or standard Tableau/PowerBI packages.</Card>
+                  <Card label="Operational Research">Third-Party Monitoring, Capacity Assessment, MEAL. Partners include Christian Aid, Expertise France, Search for Common Ground.</Card>
+                  <Card label="Peer Review">Unpublished policy and academic reports. Scoping-stage proposals through near-final feedback.</Card>
+                </div>
+                <H2>Rate Card</H2>
+                <div style={{ background: "#0f1219", border: "1px solid #181d28", borderRadius: 6, overflow: "hidden" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+                    <thead><tr style={{ borderBottom: "1px solid #181d28" }}>
+                      <th style={thS}>Service</th><th style={{...thS, textAlign: "right"}}>Rate (USD)</th>
+                    </tr></thead>
+                    <tbody>
+                      {[
+                        ["Policy Brief (24-hr turnaround)", "$4,500 flat"],
+                        ["Oral Updates / Consulting / Coaching / Peer Review", "$425/hr"],
+                        ["Full Day Coaching or Training", "$1,300 ($800 non-profits)"],
+                        ["Bespoke Visualization", "From $11,000"],
+                        ["Policy Research / Due Diligence / Ops Research", "Case-by-case"],
+                      ].map(([svc, rate], i) => (
+                        <tr key={i} style={{ borderBottom: "1px solid #14181f" }}>
+                          <td style={tdS}>{svc}</td>
+                          <td style={{...tdS, textAlign: "right", color: "#7a9e88"}}>{rate}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {active === "clients" && (
+              <div>
+                <H2>Clients & Donors</H2>
+                <P>Unusually strong roster for a boutique firm, spanning sovereign governments, multilateral institutions, development banks, and foundations.</P>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
+                  <Card label="Multilateral / IFIs">World Bank, United Nations, GIZ, KfW, Expertise France</Card>
+                  <Card label="Governments">US State Department, UK FCDO, German FFO, French MFA, Dutch MFA</Card>
+                  <Card label="Think Tanks">Atlantic Council, Open Society Foundation, European Endowment for Democracy</Card>
+                  <Card label="Foundations">Rockefeller Brothers Fund, Friedrich Ebert Stiftung, Konrad Adenauer Stiftung, Asfari Foundation</Card>
+                  <Card label="Syrian Orgs">Syrian Forum</Card>
+                  <Card label="Published In">Brookings, Carnegie, MEI, Foreign Affairs, Foreign Policy, The Guardian, Der Spiegel</Card>
+                </div>
+              </div>
+            )}
+
+            {active === "publications" && (
+              <div>
+                <H2>Recent Publications</H2>
+                <P>Back-catalog extends 13 pages covering Syrian macro, conflict economy, captagon, crony capitalism, and more.</P>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 6, marginBottom: 24 }}>
+                  {[
+                    { t: "Banking Sector Sanctions Implications", o: "Karam Shaar Advisory", d: "Jul 2025", r: "HIGH" },
+                    { t: "Captagon After the Fall of Assad", o: "New Lines Institute", d: "Jun 2025", r: "MED" },
+                    { t: "SST Designation: Implications and Pathways", o: "Observatory of P&E Networks", d: "May 2025", r: "HIGH" },
+                    { t: "EU Targeted Sanctions Reform Methodology", o: "Observatory of P&E Networks", d: "May 2025", r: "HIGH" },
+                    { t: "End the EU's Assad-Era Sanctions", o: "Middle East Institute", d: "May 2025", r: "MED" },
+                  ].map((p, i) => (
+                    <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "#0f1219", border: "1px solid #181d28", borderRadius: 4, padding: "10px 14px" }}>
+                      <div>
+                        <div style={{ fontSize: 13, color: "#c8c2b6" }}>{p.t}</div>
+                        <div style={{ fontSize: 11, color: "#3a4250", marginTop: 2 }}>{p.o} &middot; {p.d}</div>
+                      </div>
+                      <span style={{ fontSize: 9, padding: "2px 7px", borderRadius: 3, background: p.r === "HIGH" ? "#162018" : "#14161e", color: p.r === "HIGH" ? "#6b9e82" : "#4a5568", letterSpacing: 1.5, flexShrink: 0 }}>{p.r}</span>
+                    </div>
+                  ))}
+                </div>
+                <H2>Interactive Research Tools</H2>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                  {[
+                    "Israeli Activity in Southern Syria (map + timeline)",
+                    "Land Cover Tracking (2015-2025, by governorate)",
+                    "Syrian Parliament 2025 (gender, age, education, religion)",
+                    "ISIS Attacks Dashboard (geospatial, casualties)",
+                    "UXO Incident Visualization",
+                    "Syrian Interim Government Tool",
+                    "US & EU Sanctions Dashboard",
+                    "Exchange Rate Trackers (official, black market, UN gap)",
+                  ].map((t, i) => (
+                    <div key={i} style={{ background: "#0f1219", border: "1px solid #181d28", borderRadius: 4, padding: "8px 12px", fontSize: 12, color: "#6b7888" }}>{t}</div>
+                  ))}
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 20 }}>
+                  <Card label="Syria in Figures (Monthly)">16 issues to date (latest Jan 2026). Systematic macro data tracking. Led by Ben F&egrave;ve.</Card>
+                  <Card label="Syria Sanctions Monitor (Monthly)">5 issues to date. US/EU/UK policy developments, legal shifts, regional dynamics. Led by Vittorio Maresca.</Card>
+                </div>
+              </div>
+            )}
+
+            {active === "sanctions" && (
+              <div>
+                <H2>Sanctions Program</H2>
+                <P>They run a formal program called "A Multifaceted Approach to Easing and Coping with Sanctions on Syria." Not just research. Includes advocacy, legal aid, and direct engagement with Western governments and the Syrian private sector. Addresses the "sanctions hangover," meaning lingering uncertainty and compliance fears post-lifting.</P>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
+                  <Card label="Deliverables">Monthly Sanctions Newsletter. Thematic analytical briefs (8-10 pages). Pro bono legal aid platform for Syrian civil society. In-person advocacy missions to Western governments and think tanks.</Card>
+                  <Card label="Key Publications">Syria Accountability Act repeal analysis (Feb 2026). Caesar Act status assessment. UN 1267 HTS sectoral impact. US legislative tracker. Syria sanctions bills tracker.</Card>
+                </div>
+                <Callout color="#c4975a" label="Relevance to OW">
+                  Their sanctions expertise maps directly to our financial sector assessment. The "sanctions hangover" framing aligns with the compliance and reintegration challenges shaping how Syria's banking sector can reconnect to international correspondent banking. Their ex-CBS team members provide institutional memory of how the system operated before and during the conflict.
+                </Callout>
+              </div>
+            )}
+
+            {active === "media" && (
+              <div>
+                <H2>Media Credibility</H2>
+                <P>Karam Shaar has become a go-to source for Western and Arab media on Syria's economy. The range and quality of outlets is exceptional for a boutique firm.</P>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
+                  <Card label="Published In (analysis)">Brookings, Foreign Policy, Carnegie, MEI, Foreign Affairs, The Guardian, Der Spiegel</Card>
+                  <Card label="Quoted / Interviewed By">BBC, Reuters, NYT, Al Jazeera, Al Arabiya, Washington Post, AP, Bloomberg, WSJ, FT, Le Monde, DW, CNBC, Syria TV, Syria Direct, Enab Baladi</Card>
+                </div>
+                <P>Most recent coverage (Feb 2026) in The National on Syria's central bank reform with a top US consultant. Al Jazeera interview Dec 2025 on post-sanctions economic outlook. This media footprint means Karam is well-connected to policy discourse and likely has direct relationships with key decision-makers in Western foreign ministries and the Syrian transitional government.</P>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
