@@ -108,6 +108,37 @@
     function App() {
       const [active, setActive] = useState("exec");
       const [expandedTeam, setExpandedTeam] = useState(null);
+      const [authed, setAuthed] = useState(false);
+      const [pw, setPw] = useState("");
+      const [error, setError] = useState(false);
+
+      function handleLogin(e) {
+        e.preventDefault();
+        if (pw === "OW2026") { setAuthed(true); setError(false); }
+        else { setError(true); setPw(""); }
+      }
+
+      if (!authed) return (
+        <div style={{ fontFamily: "'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif", background: "#0b0e13", color: "#b8b2a6", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ textAlign: "center", width: 320 }}>
+            <div style={{ fontSize: 10, letterSpacing: 3.5, color: "#4a5568", textTransform: "uppercase", marginBottom: 8 }}>Syria Engagement &middot; Pre-Call Research Briefing</div>
+            <h1 style={{ fontSize: 22, fontWeight: 400, color: "#ddd8cc", marginBottom: 32 }}>Karam Shaar Advisory</h1>
+            <div style={{ display: "flex", gap: 8 }}>
+              <input
+                type="password"
+                value={pw}
+                onChange={(e) => { setPw(e.target.value); setError(false); }}
+                onKeyDown={(e) => e.key === "Enter" && handleLogin(e)}
+                placeholder="Enter password"
+                style={{ flex: 1, padding: "10px 14px", background: "#0f1219", border: error ? "1px solid #6b3a3a" : "1px solid #181d28", borderRadius: 5, color: "#ddd8cc", fontSize: 13, fontFamily: "inherit", outline: "none" }}
+                autoFocus
+              />
+              <button onClick={handleLogin} style={{ padding: "10px 20px", background: "#6b9e82", border: "none", borderRadius: 5, color: "#0b0e13", fontSize: 12, fontFamily: "inherit", cursor: "pointer", fontWeight: 600, letterSpacing: 0.5 }}>Enter</button>
+            </div>
+            {error && <div style={{ color: "#8a5a5a", fontSize: 12, marginTop: 10 }}>Incorrect password</div>}
+          </div>
+        </div>
+      );
 
       return (
         <div style={{ fontFamily: "'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif", background: "#0b0e13", color: "#b8b2a6", minHeight: "100vh" }}>
