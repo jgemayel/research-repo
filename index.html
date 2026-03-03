@@ -143,7 +143,7 @@
                   <Stat value="15+" label="Research tools" sub="Interactive dashboards" />
                 </div>
                 <Callout color="#6b9e82" label="Bottom Line">
-                  Karam Shaar Advisory appears to be the go-to independent consultancy for Syria's political economy. Their combination of on-the-ground networks (field teams across all control areas in Syria), academic rigor (PhD-led, published in top outlets), and technical capability (OSINT, AI analytics, interactive data tools) is rare. The founder's trajectory from activist to UN economic adviser gives him deep institutional relationships on both the Syrian and international sides. Worth building a relationship with. If financial sector work in Syria comes up down the road, they would be a natural partner or data source to reach for.
+                  Karam Shaar Advisory appears to be the go-to independent consultancy for Syria's political economy. Their combination of on-the-ground networks (field teams across all control areas in Syria), academic rigor (PhD-led, published in top outlets), and technical capability (OSINT, AI analytics, interactive data tools) is rare. The founder's trajectory from activist to UN economic adviser gives him deep institutional relationships on both the Syrian and international sides. For a Syria financial sector assessment, they could be a highly valuable data source, sub-contractor, or strategic partner.
                 </Callout>
               </div>
             )}
@@ -151,7 +151,7 @@
             {active === "data" && (
               <div>
                 <H2>Data Sources & Methodologies</H2>
-                <P>Background context on their data capabilities. Useful to have in mind during the conversation, but no need to probe this directly on an intro call. Let it come up naturally.</P>
+                <P>This is the most critical area for the call. Their data capabilities span several categories. Below is what we can infer from the website, plus gaps worth probing.</P>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 10, marginBottom: 20 }}>
                   <DataRow title="Primary Field Data" strength="Very Strong" color="#6b9e82" desc="Guarantee access to all parts of Syria for primary data collection. Field researchers in Damascus, Deir ez-Zor, NW Syria. Team leader is a 10-year MEAL veteran in NW Syria." />
                   <DataRow title="OSINT & Digital Intelligence" strength="Very Strong" color="#6b9e82" desc="Two OSINT leads, a data security expert, and an AI co-founder (ex-Deloitte/TD Bank). Geolocation via satellite, entity tracking, image/video analysis, graph tech, social network analysis." />
@@ -160,7 +160,7 @@
                   <DataRow title="Political Economy & Actor Mapping" strength="Strong" color="#6b8fa8" desc="Interactive tools for interim government, Parliament 2025, ISIS attacks, tribal topology, heads of state. Captagon trade analysis and crony capitalism networks via Observatory of P&E Networks." />
                   <DataRow title="Banking / Financial Sector" strength="Highly Relevant" color="#c4975a" desc="Major report on banking sector sanctions (Jul 2025) based on interviews with Syrian bankers. Two ex-CBS staff: Abeer Asaad (Head of Off-Site Banking Supervision) and Majd Hamad (MENAFATF Advisory Committee). IFRS, Basel, AML/CFT expertise." />
                 </div>
-                <Callout color="#c4975a" label="Worth Understanding Over Time">
+                <Callout color="#c4975a" label="Key Gaps to Probe">
                   The website showcases outputs but does not detail underlying databases, proprietary datasets, or third-party data subscriptions. We should explore whether they maintain structured databases vs. ad-hoc research, how they validate field data, their data refresh frequency, and whether methodology documentation meets typical standards for source verification. Also worth understanding if they hold any exclusive data arrangements with Syrian government entities post-transition.
                 </Callout>
               </div>
@@ -169,33 +169,24 @@
             {active === "questions" && (
               <div>
                 <H2>Suggested Questions for the Call</H2>
-                <P>This is an introductory call. The goal is to build the relationship, understand their business model, get their perspective on Syria's financial sector, and identify good data sources. Keep it conversational, not interrogative.</P>
-
+                <P>Organized by priority. Goal is to understand data capabilities, methodologies, and how they could complement a financial sector assessment.</P>
                 <div style={{ marginBottom: 20 }}>
-                  <PriorityLabel color="#c47a6b">Getting to Know Their Business</PriorityLabel>
-                  <QCard q="How did you end up building a consultancy specifically around Syria's political economy? What was the gap you saw?" r="Opens a personal, low-pressure conversation. Karam's story (Aleppo, activism, UN, World Bank) will come through naturally and tells you a lot about his network." />
-                  <QCard q="What does a typical engagement look like for you? Who tends to come to you, and what are they usually looking for?" r="Reveals their business model without asking directly. Helps assess whether they do structured advisory work or primarily research/publications." />
-                  <QCard q="How has demand shifted since Assad's fall? What are clients asking for now versus a year ago?" r="Tests their pulse on the market. Also reveals whether they are scaling up or stretched thin." />
+                  <PriorityLabel color="#c47a6b">Priority 1 — Must Ask</PriorityLabel>
+                  <QCard q="What structured datasets do you maintain on Syria's financial sector, and how frequently are they updated?" r="Banking report cites interviews with bankers/compliance experts. Need to know if they hold ongoing structured data vs. one-off research." />
+                  <QCard q="Your team includes two ex-CBS staff. What level of ongoing access or relationships do they maintain with the Central Bank post-transition?" r="Abeer Asaad (Head of Off-Site Banking Supervision) and Majd Hamad (MENAFATF) would have direct CBS knowledge. Understanding current access is critical." />
+                  <QCard q="How do you validate and quality-assure primary field data collected across different control areas in Syria?" r="They claim access to all parts of Syria. Need to understand methodology, sample sizes, and verification processes." />
+                  <QCard q="What is your current engagement with the Syrian transitional government on economic reform, and how does that shape advisory independence?" r="Given Karam's recent access to Syria and media profile, understanding potential conflicts or preferential access matters for due diligence." />
                 </div>
-
                 <div style={{ marginBottom: 20 }}>
-                  <PriorityLabel color="#c4975a">Their View on Syria's Financial Sector</PriorityLabel>
-                  <QCard q="What's your read on the state of Syria's banking sector right now? What are the biggest bottlenecks to getting it functional again?" r="Open-ended and substantive. Their July 2025 banking sanctions report and two ex-CBS team members mean they will have a strong view here." />
-                  <QCard q="How do you see the sanctions hangover playing out for financial institutions trying to re-engage with Syria?" r="Directly references their own framing. Shows you have done your homework and invites them to go deep on a topic they clearly own." />
-                  <QCard q="Who are the key players in financial sector reform right now, on the Syrian side and the international side?" r="Gets at their stakeholder map without asking them to hand it over. Useful for understanding where they sit in the ecosystem." />
+                  <PriorityLabel color="#c4975a">Priority 2 — Should Ask</PriorityLabel>
+                  <QCard q="Walk us through the data sources behind 'Syria in Figures.' What proportion comes from official stats vs. your own collection vs. third parties?" r="Flagship data product (16 monthly issues). Understanding methodology reveals their data infrastructure." />
+                  <QCard q="What OSINT tools and databases do you use for sanctions screening and actor mapping? Commercial platforms or proprietary?" r="Two OSINT leads and an AI specialist. Tech stack reveals scalability and depth." />
+                  <QCard q="Have you worked with management consultancies or IFIs on financial sector diagnostics before? Scope and deliverable format?" r="They list World Bank, GIZ, KfW. Understanding structured advisory delivery vs. standalone research frames potential collaboration." />
                 </div>
-
-                <div style={{ marginBottom: 20 }}>
-                  <PriorityLabel color="#6b9e82">Data Sources & Information</PriorityLabel>
-                  <QCard q="If someone wanted to build a solid picture of Syria's economy right now, where would you point them? What sources do you trust?" r="Positions them as the expert and asks for advice rather than auditing their methods. Will naturally reveal their own data infrastructure." />
-                  <QCard q="How reliable is official data coming out of Syria these days? What do you supplement it with?" r="Gets at primary vs. secondary data without making it feel like a vendor assessment." />
-                  <QCard q="We noticed your 'Syria in Figures' publication. That's a substantial data effort. What has been hardest to track consistently?" r="Compliments their work, shows familiarity, and probes methodology in a friendly way." />
-                </div>
-
                 <div>
-                  <PriorityLabel color="#4a5568">Future Usefulness (Light Touch)</PriorityLabel>
-                  <QCard q="Are there areas where you are looking to expand your work or partner with other firms?" r="Opens the door to future collaboration without being transactional. If they mention financial sector work or consulting partnerships, that is a natural opening." />
-                  <QCard q="What is the best way to stay in touch and keep up with your work?" r="Simple close. They have newsletters (Syria in Figures, Sanctions Monitor) which are worth subscribing to regardless." />
+                  <PriorityLabel color="#6b9e82">Priority 3 — Good to Ask</PriorityLabel>
+                  <QCard q="What is your geographic footprint for field data collection? How many active field researchers per governorate?" r="They mention teams spanning 'all control areas.' Quantifying helps assess coverage density." />
+                  <QCard q="How do you see the sanctions landscape evolving over 6-12 months, and what data are you tracking to monitor that?" r="Opens substantive discussion testing analytical depth and real-time monitoring capabilities." />
                 </div>
               </div>
             )}
@@ -330,7 +321,7 @@
                   <Card label="Key Publications">Syria Accountability Act repeal analysis (Feb 2026). Caesar Act status assessment. UN 1267 HTS sectoral impact. US legislative tracker. Syria sanctions bills tracker.</Card>
                 </div>
                 <Callout color="#c4975a" label="Strategic Relevance">
-                  Their sanctions expertise maps directly to financial sector work. The "sanctions hangover" framing aligns with the compliance and reintegration challenges shaping how Syria's banking sector can reconnect to international correspondent banking. Their ex-CBS team members provide institutional memory of how the system operated before and during the conflict. A good topic to surface organically on the call.
+                  Their sanctions expertise maps directly to a financial sector assessment engagement. The "sanctions hangover" framing aligns with the compliance and reintegration challenges shaping how Syria's banking sector can reconnect to international correspondent banking. Their ex-CBS team members provide institutional memory of how the system operated before and during the conflict.
                 </Callout>
               </div>
             )}
